@@ -1,16 +1,28 @@
 {
-  "name": "node-hello",
+  "name": "testjenkins",
   "version": "1.0.0",
   "description": "Simple node.js app that servers \"hello world\"",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
+  "directories": {
+    "test": "test"
   },
   "dependencies": {
-    "express": "^4.17.1",
     "is-regex": "^1.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amanjain-1997/testjenkins.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amanjain-1997/testjenkins/issues"
+  },
+  "homepage": "https://github.com/amanjain-1997/testjenkins#readme"
 }
