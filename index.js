@@ -6,7 +6,7 @@ const port = 3000
 app.get('/', (req, res) => {
   var new1 = isRegex(1)
   console.log(new1)
-  res.send("Test 3"+new1.toString())
+  res.send("Test 4"+new1.toString())
 })
 
 app.listen(port, () => {
