@@ -13,7 +13,7 @@
     "mocha": "^8.2.1"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha 'test/**/*.js' --recursive"
   },
   "repository": {
     "type": "git",
