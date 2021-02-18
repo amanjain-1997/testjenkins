@@ -2,13 +2,19 @@ pipeline {
   agent any
     
   tools {nodejs "node"}
-  
-  script {
-    def BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
-    echo ${BRANCH}
-  }  
+
   stages {
-        
+    
+   stage('Git Info') {
+      steps {
+        sh '//...
+    git rev-parse --abbrev-ref HEAD > GIT_BRANCH'
+    git_branch = readFile('GIT_BRANCH').trim()
+    echo git_branch
+    //...
+   ' 
+      }
+    }
     stage('Cloning Git') {
       steps {
                 git url: 'https://github.com/amanjain-1997/testjenkins.git', branch: 'main'  
