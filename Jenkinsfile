@@ -2,7 +2,11 @@ pipeline {
   agent any
     
   tools {nodejs "node"}
-    
+  
+  script {
+    def BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+    echo ${BRANCH}
+  }  
   stages {
         
     stage('Cloning Git') {
@@ -23,5 +27,5 @@ pipeline {
       }
     }  
     
-
+  }
 }
