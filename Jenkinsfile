@@ -7,12 +7,10 @@ pipeline {
     
    stage('Git Info') {
       steps {
-        sh '//...
-    git rev-parse --abbrev-ref HEAD > GIT_BRANCH
-    git_branch = readFile('GIT_BRANCH').trim()
-    echo git_branch
-    //...
-   ' 
+       scmInfo = checkout scm
+        /*...*/
+        echo "scm : ${scmInfo}"
+        echo "${scmInfo.GIT_COMMIT}"
       }
     }
     stage('Cloning Git') {
