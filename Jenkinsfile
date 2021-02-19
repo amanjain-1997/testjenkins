@@ -3,7 +3,14 @@ pipeline {
     tools {nodejs "node"}
     
     stages {
-        
+
+    stage('ClONING Git') {
+      steps {
+                git url: 'https://github.com/amanjain-1997/testjenkins.git', branch: env.BRANCH_NAME
+    }
+
+    }
+    
         
     stage('Install dependencies') {
       steps {
@@ -31,3 +38,4 @@ pipeline {
      }
  }   
 }
+
