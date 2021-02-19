@@ -30,6 +30,25 @@ pipeline {
                echo "I am at the master branch"
         }
      }
+    stage('SSH transfer') {
+       when { branch "main" }
+        steps([$class: 'BapSshPromotionPublisherPlugin']) {
+            sshPublisher(
+                continueOnError: false, failOnError: true,
+                publishers: [
+                    sshPublisherDesc(
+                        configName: "yactraq-vm13",
+                        verbose: true,
+                        transfers: [
+                        //sshTransfer(execCommand: 'echo "hello" > abcd.txt')
+                         sshTransfer(execCommand: 'cd testjenkins; git stash; git pull; npm install; pm2 restart 1')
+                        ]
+                    )
+                ]
+            )
+        }
+    }
+
     stage("Build") {
        when { branch "development" }
        steps { 
