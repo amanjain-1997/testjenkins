@@ -31,7 +31,7 @@ pipeline {
     stage("Build") {
        when { branch "development" }
        steps { 
-               echo "I am at the master branch"
+               echo "I am at the development branch"
         }
      }
  }   
