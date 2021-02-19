@@ -40,6 +40,7 @@ pipeline {
                echo "I am at the master branch"
         }
      }
+
     stage('SSH transfer') {
        when { branch "main" }
         steps([$class: 'BapSshPromotionPublisherPlugin']) {
@@ -64,6 +65,7 @@ pipeline {
        steps { 
                echo "I am at the development branch"
     }
+   }
      
     stage('Test') {
       steps {
@@ -77,6 +79,7 @@ pipeline {
                echo "I am at the master branch"
         }
      }
+
     stage("Build") {
        when { branch "development" }
        steps { 
