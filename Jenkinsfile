@@ -3,6 +3,7 @@ pipeline {
     tools {nodejs "node"}
     
     stages {
+<<<<<<< HEAD
 
     stage('ClONING Git') {
       steps {
@@ -11,11 +12,20 @@ pipeline {
 
     }
     
+=======
+        
+    stage('Cloning Git') {
+      steps {
+                git url: 'https://github.com/amanjain-1997/testjenkins.git', branch: env.BRANCH_NAME  
+    }
+    }
+>>>>>>> main
         
     stage('Install dependencies') {
       steps {
         sh 'npm install'
       }
+<<<<<<< HEAD
     }
      
     stage('Test') {
@@ -53,6 +63,26 @@ pipeline {
        when { branch "development" }
        steps { 
                echo "I am at the development branch"
+=======
+    }
+     
+    stage('Test') {
+      steps {
+         sh "npm test"
+      }
+    }  
+     
+    stage("Build-Main") {
+       when { branch "main" }
+       steps { 
+               echo "I am at the master branch"
+        }
+     }
+    stage("Build") {
+       when { branch "development" }
+       steps { 
+               echo "I am at the master branch"
+>>>>>>> main
         }
      }
  }   
