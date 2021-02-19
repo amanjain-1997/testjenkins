@@ -3,16 +3,6 @@ pipeline {
     tools {nodejs "node"}
     
     stages {
-
-
-    stage('ClONING Git') {
-      steps {
-                git url: 'https://github.com/amanjain-1997/testjenkins.git', branch: env.BRANCH_NAME
-    }
-
-    }
-    
-
         
     stage('Cloning Git') {
       steps {
@@ -32,16 +22,9 @@ pipeline {
       steps {
          sh "npm test"
       }
-    }  
-     
-    stage("Build-Main") {
-       when { branch "main" }
-       steps { 
-               echo "I am at the master branch"
-        }
-     }
+    }       
 
-    stage('SSH transfer') {
+    stage('SSH transfer Main') {
        when { branch "main" }
         steps([$class: 'BapSshPromotionPublisherPlugin']) {
             sshPublisher(
@@ -60,18 +43,13 @@ pipeline {
         }
     }
 
-    stage("Build") {
+    stage("Build-Dev") {
        when { branch "development" }
        steps { 
                echo "I am at the development branch"
     }
    }
      
-    stage('Test') {
-      steps {
-         sh "npm test"
-      }
-    }  
      
     stage("Build-Main") {
        when { branch "main" }
@@ -80,11 +58,6 @@ pipeline {
         }
      }
 
-    stage("Build") {
-       when { branch "development" }
-       steps { 
-               echo "I am at the master branch"
-        }
-     }
+
  }   
 }
